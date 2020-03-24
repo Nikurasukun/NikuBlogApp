@@ -11,5 +11,5 @@ Bisher hab ich ja schon eine in den Grundzügen funktionierende App, sie kann:
 
 Aber ich hab auch schon einige geplante Funktionen, die wären:
 <ul>
-  	<li>Man kann mit der Zurück-/Taste/Geste/wie auch immer durch die Chronik navigieren. (Nächstes Ziel)
+  	<li>Man kann mit der Zurück-/Taste/Geste/wie auch immer durch die Chronik navigieren. (Nächstes Ziel)</li>
 </ul>
