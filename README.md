@@ -7,7 +7,7 @@ Bisher hab ich ja schon eine in den Grundzügen funktionierende App, sie kann:
 <ul>
   <li>Die mobile Version der Seite aufrufen</li>
   <li>Öffnet nur seiteninterne Links in der App, bei anderen, wie z.B. meiner Twitter-Verlinkung wird gefragt ob der Link in der Twitter App oder in eurem Browser geöffnet werden soll.
-</ul
+</ul>
 
 Aber ich hab auch schon einige geplante Funktionen, die wären:
 <ul>
