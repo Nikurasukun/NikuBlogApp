@@ -1,6 +1,8 @@
 # NikuBlogApp
 Die App für meinen Blog
 
+<img src="https://github.com/Nikurasukun/blog/blob/gh-pages/assets/img/headerimg.jpg"></img>
+
 So, damit man auch von den mobilen Endgeräten bequemen Zugriff auf meinen Blog hat, habe ich dafür einfach mal eine App erstellt. Das ganze hab ich auf GitHub hochgeladen, damit ihr euch anschauen könnt, wie ich das umgesetzt habe.
 
 Bisher hab ich ja schon eine in den Grundzügen funktionierende App, sie kann:
