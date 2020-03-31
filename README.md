@@ -10,9 +10,10 @@ Bisher hab ich ja schon eine in den Grundzügen funktionierende App, sie kann:
   <li>Die mobile Version der Seite aufrufen</li>
   <li>Öffnet nur seiteninterne Links in der App, bei anderen, wie z.B. meiner Twitter-Verlinkung wird gefragt ob der Link in der Twitter App oder in eurem Browser geöffnet werden soll.</li>
   <li>Man kann mit der Zurück-/Taste/Geste/wie auch immer durch die Chronik navigieren.</li>
+  <li>Das öffnen der Links in Custom Tabs statt im Browser</li>
 </ul>
 
 Aber ich hab auch schon einige geplante Funktionen, die wären:
 <ul>
-  	<li>Das öffnen der Links in Custom Tabs statt im Browser</li>
+  <li>Zur Zeit nichts, habt ihr Vorschläge</li>
 </ul>
