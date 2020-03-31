@@ -1,6 +1,8 @@
 package xyz.nikurasu.nikublog
 
 import android.content.Intent
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +10,8 @@ import android.view.KeyEvent
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.ContextCompat
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,10 +43,17 @@ class MainActivity : AppCompatActivity() {
                     return false
                 }
                 //if not it starts an implicit intend to open the Link
-                var url : String = request.url.toString()
-                var intent: Intent = Intent(Intent.ACTION_VIEW)
-                intent.data = Uri.parse(url)
-                startActivity(intent)
+                if (isChromeInstalledAndVersionGreaterThan65()) {
+                    val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder()
+                    builder.setToolbarColor(ContextCompat.getColor(this@MainActivity, R.color.colorPrimary))
+                    val CustomTabsIntent: CustomTabsIntent = builder.build()
+                    CustomTabsIntent.launchUrl(this@MainActivity, request.url)
+                } else {
+                    var url : String = request.url.toString()
+                    var intent: Intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse(url)
+                    startActivity(intent)
+                }
                 return true
             }
         }
@@ -59,6 +70,21 @@ class MainActivity : AppCompatActivity() {
         // If it wasn't the Back key or there's no web page history, bubble up to the default
         // system behavior (probably exit the activity)
         return super.onKeyDown(keyCode, event)
+    }
+
+    private fun isChromeInstalledAndVersionGreaterThan65(): Boolean {
+        var pInfo: PackageInfo?
+        try {
+            pInfo = packageManager.getPackageInfo("com.android.chrome", 0)
+        } catch (e: PackageManager.NameNotFoundException) {
+            return false
+        }
+        if(pInfo != null) {
+            val firstDotIndex: Int = pInfo.versionName.indexOf(".")
+            val majorVersion: String = pInfo.versionName.substring(0, firstDotIndex)
+            return Integer.parseInt(majorVersion) > 65
+        }
+        return false
     }
 }
 
