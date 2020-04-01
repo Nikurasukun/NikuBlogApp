@@ -15,5 +15,5 @@ Bisher hab ich ja schon eine in den Grundzügen funktionierende App, sie kann:
 
 Aber ich hab auch schon einige geplante Funktionen, die wären:
 <ul>
-  <li>Zur Zeit nichts, habt ihr Vorschläge</li>
+  <li>Schönerer Bildschirm, wenn man offline ist</li>
 </ul>
