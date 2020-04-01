@@ -16,4 +16,5 @@ Bisher hab ich ja schon eine in den Grundzügen funktionierende App, sie kann:
 Aber ich hab auch schon einige geplante Funktionen, die wären:
 <ul>
   <li>Schönerer Bildschirm, wenn man offline ist</li>
+  <li>Schöneres Theme</li>
 </ul>
