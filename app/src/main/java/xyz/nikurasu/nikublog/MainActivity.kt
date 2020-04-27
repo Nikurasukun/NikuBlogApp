@@ -1,15 +1,20 @@
 package xyz.nikurasu.nikublog
 
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.annotation.RequiresApi
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
 
@@ -43,12 +48,12 @@ class MainActivity : AppCompatActivity() {
                     return false
                 }
                 //if not it starts an implicit intend to open the Link
-                if (isChromeInstalledAndVersionGreaterThan65()) {
-                    val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder()
-                    builder.setToolbarColor(ContextCompat.getColor(this@MainActivity, R.color.colorPrimary))
+                if (isChromeInstalledAndVersionGreaterThan65()) { //Detect Google Chrome for Custom Tab
+                    val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder() //The builder for the custom Tab
+                    builder.setToolbarColor(ContextCompat.getColor(this@MainActivity, R.color.colorPrimary)) //set Toolbar color
                     val CustomTabsIntent: CustomTabsIntent = builder.build()
                     CustomTabsIntent.launchUrl(this@MainActivity, request.url)
-                } else {
+                } else { //if Google Chrome isnt installed use the normal Browser
                     var url : String = request.url.toString()
                     var intent: Intent = Intent(Intent.ACTION_VIEW)
                     intent.data = Uri.parse(url)
@@ -72,19 +77,27 @@ class MainActivity : AppCompatActivity() {
         return super.onKeyDown(keyCode, event)
     }
 
-    private fun isChromeInstalledAndVersionGreaterThan65(): Boolean {
+    private fun isChromeInstalledAndVersionGreaterThan65(): Boolean { //searches for Google Chrome on the device
         var pInfo: PackageInfo?
         try {
             pInfo = packageManager.getPackageInfo("com.android.chrome", 0)
         } catch (e: PackageManager.NameNotFoundException) {
-            return false
+            return false //Return false if no Chrome
         }
         if(pInfo != null) {
             val firstDotIndex: Int = pInfo.versionName.indexOf(".")
-            val majorVersion: String = pInfo.versionName.substring(0, firstDotIndex)
-            return Integer.parseInt(majorVersion) > 65
+            val majorVersion: String = pInfo.versionName.substring(0, firstDotIndex) //get the Major Version Code
+            return Integer.parseInt(majorVersion) > 65 //Return true if Version is higher then 65
         }
         return false
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun amIConnected() {
+        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE)
+        if (connectivityManager is ConnectivityManager) {
+            val networkInfo = connectivityManager.activeNetwork
+        }
     }
 }
 
