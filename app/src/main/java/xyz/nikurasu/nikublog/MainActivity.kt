@@ -38,13 +38,13 @@ class MainActivity : AppCompatActivity() {
         myWebView.settings.javaScriptEnabled = true
 
         //Load the URL
-        myWebView.loadUrl("https://www.nikurasu.xyz")
+        myWebView.loadUrl("https://www.nikurasu.de")
 
         //Only load Links with the given Domain in the Webview, open the others in the Browser or in a other App
         myWebView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest): Boolean {
                 //Checks if the link has the given Domain
-                if (request.url.host.toString() == "www.nikurasu.xyz"){
+                if (request.url.host.toString() == "www.nikurasu.de"){
                     return false
                 }
                 //if not it starts an implicit intend to open the Link
